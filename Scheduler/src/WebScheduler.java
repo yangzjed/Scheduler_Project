@@ -20,13 +20,13 @@ while there are still unassigned students:
 
 public class WebScheduler {
     public int numSlots;
-    int[][] availabilityArray; //max. 500 students
+    int[][] availabilityArray; //max. 20 students
     int[] coverages;
     int[] assignments;
 
     WebScheduler(int numSlots){
         this.numSlots = numSlots;
-        this.availabilityArray = new int[numSlots][500];
+        this.availabilityArray = new int[numSlots][20];
         this.coverages = new int[numSlots];
         this.assignments = new int[numSlots];
         for(int i=0; i<numSlots; i++){
@@ -37,30 +37,27 @@ public class WebScheduler {
 
     public void WebSchedule(){
 
-        int numStudents = 2;
+        System.out.println("Number of students:");
+        Scanner sc = new Scanner(System.in);
+        int numStudents = sc.nextInt();
         ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
-        WebAvailability a1 = new WebAvailability(1, 1);
-        WebAvailability a2 = new WebAvailability(2, 1);
-        for(int i=0; i<numSlots; i++){
-            a1.availabilities.add(0);
-            a2.availabilities.add(0);
+        for(int i=0; i<numStudents; i++){
+            WebAvailability s = new WebAvailability(i+1,1);
+            for(int j=0; j<numSlots; j++){
+                s.availabilities.add(0);
+            }
+            availableStudents.add(s);
         }
 
-        a1.availabilities.set(0,1);
-        a1.availabilities.set(3,1);
-        a2.availabilities.set(0,1);
-        a2.availabilities.set(6,1);
-
-        availableStudents.add(a1);
-        availableStudents.add(a2);
-
         //set up availabilityArray and coverages
-        for(int i=0; i<numStudents; i++){
-            WebAvailability currStudent = availableStudents.get(i);
-            for(int j=0; j<numSlots; j++){
-                availabilityArray[j][i] = currStudent.availabilities.get(j);
-                coverages[j]++;
-                System.out.printf("%d ",availabilityArray[j][i]);
+        for(int i=0; i<numSlots; i++){
+            System.out.printf("Enter student availabilities for time slot %d\n", i);
+            for(int j=0; j<numStudents; j++){
+                int t = sc.nextInt();
+                availableStudents.get(j).availabilities.set(i, t);
+                availabilityArray[i][j] = availableStudents.get(j).availabilities.get(i);
+                coverages[i]++;
+                System.out.printf("%d ",availabilityArray[i][j]);
             }
             System.out.println();
         }
@@ -74,20 +71,20 @@ public class WebScheduler {
 
             //1. find the time slot with least available students;
             ArrayList<Integer> timeSlotAvailabilities = new ArrayList<Integer>();
-            for(int i=0; i<availabilityArray[0].length; i++){
+            for(int i=0; i<availabilityArray.length; i++){
                 int totalStudents = 0;
-                for(int j=0; j<availabilityArray.length; j++){
-                    if(availabilityArray[j][i]!=0){
+                for(int j=0; j<availabilityArray[0].length; j++){
+                    if(availabilityArray[i][j]!=0){
                         totalStudents++;
                     }
                 }
                 timeSlotAvailabilities.add(totalStudents);
             }
 
-            int currentMin = 0;
+            int currentMin = numStudents+1;
             int currentTask = 0;
             for(int i=0; i<timeSlotAvailabilities.size(); i++){
-                if(timeSlotAvailabilities.get(i)<currentMin){
+                if(timeSlotAvailabilities.get(i)<currentMin && timeSlotAvailabilities.get(i)!=0){
                     currentMin = timeSlotAvailabilities.get(i);
                     currentTask = i;
                 }
@@ -116,6 +113,9 @@ public class WebScheduler {
                     availableStudents.get(j).availabilities.set(currentTask, 0);
                     availableStudents.get(j).updateTotalAvailability();
                 }
+                for(int j=0; j<availabilityArray[0].length; j++){
+                    availabilityArray[currentTask][j] = 0;
+                }
                 if (!temp.isEmpty()) {
                     availableStudents.remove(temp.get(0));
                 }
@@ -127,5 +127,8 @@ public class WebScheduler {
 
 
         }
+
+
+        System.out.println(Arrays.toString(assignments));
     }
 }
