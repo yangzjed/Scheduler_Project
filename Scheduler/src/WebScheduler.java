@@ -22,12 +22,14 @@ while there are still unassigned students:
 public class WebScheduler {
     public int numSlots;
     int[][] availabilityArray; //max. 20 students
+    int[][] availabilityArrayStatic;
     int[] coverages;
     int[] assignments;
 
     WebScheduler(int numSlots){
         this.numSlots = numSlots;
         this.availabilityArray = new int[numSlots][20];
+        this.availabilityArrayStatic = new int[numSlots][20];
         this.coverages = new int[numSlots];
         this.assignments = new int[numSlots];
         for(int i=0; i<numSlots; i++){
@@ -53,12 +55,17 @@ public class WebScheduler {
 
         int numStudents = fsc.nextInt();
         ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
+        ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
+
         for(int i=0; i<numStudents; i++){
             WebAvailability s = new WebAvailability(i+1,1);
+            WebAvailability s2 = new WebAvailability(i+1,1);
             for(int j=0; j<numSlots; j++){
                 s.availabilities.add(0);
+                s2.availabilities.add(0);
             }
             availableStudents.add(s);
+            availableStudentsStatic.add(s2);
         }
 
         //set up availabilityArray and coverages
@@ -67,80 +74,128 @@ public class WebScheduler {
             for(int j=0; j<numStudents; j++){
                 int t = fsc.nextInt();
                 availableStudents.get(j).availabilities.set(i, t);
+                availableStudentsStatic.get(j).availabilities.set(i,t);
                 availabilityArray[i][j] = availableStudents.get(j).availabilities.get(i);
+                availabilityArrayStatic[i][j] = availableStudents.get(j).availabilities.get(i);
                 coverages[i]++;
                 System.out.printf("%d ",availabilityArray[i][j]);
             }
             System.out.println();
         }
 
-        //rank the students by availability
 
+        int prefToSatisfy = 0;
+        int prevAssigned = 0;
+        for(prefToSatisfy = 0; prefToSatisfy<numStudents; prefToSatisfy++){
+            int prefLeft = prefToSatisfy;
+            //assign students
+            while(!availableStudents.isEmpty()){
+                //TODO: Implement assignment algorithm 2
 
-        //assign students
-        while(!availableStudents.isEmpty()){
-            //TODO: Implement assignment algorithm 2
+                //1. find the time slot with least available students;
+                ArrayList<Integer> timeSlotAvailabilities = new ArrayList<Integer>();
+                for(int i=0; i<availabilityArray.length; i++){
+                    int totalStudents = 0;
+                    for(int j=0; j<availabilityArray[0].length; j++){
+                        if(availabilityArray[i][j]!=0){
+                            totalStudents++;
+                        }
+                    }
+                    timeSlotAvailabilities.add(totalStudents);
+                }
 
-            //1. find the time slot with least available students;
-            ArrayList<Integer> timeSlotAvailabilities = new ArrayList<Integer>();
-            for(int i=0; i<availabilityArray.length; i++){
-                int totalStudents = 0;
-                for(int j=0; j<availabilityArray[0].length; j++){
-                    if(availabilityArray[i][j]!=0){
-                        totalStudents++;
+                int currentMin = numStudents+1;
+                int currentTask = 0;
+                for(int i=0; i<timeSlotAvailabilities.size(); i++){
+                    if(timeSlotAvailabilities.get(i)<currentMin && timeSlotAvailabilities.get(i)!=0){
+                        currentMin = timeSlotAvailabilities.get(i);
+                        currentTask = i;
                     }
                 }
-                timeSlotAvailabilities.add(totalStudents);
+
+
+                //2. Find the least available student that can do currentTask
+                ArrayList<WebAvailability> temp = new ArrayList<WebAvailability>();
+                ArrayList<WebAvailability> tempPref = new ArrayList<WebAvailability>();
+                for(WebAvailability a : availableStudents){
+                    if(a.availabilities.get(currentTask)!=0){
+                        temp.add(a);
+                    }
+                    if(a.availabilities.get(currentTask)==2){
+                        tempPref.add(a);
+                    }
+                }
+
+                if(!tempPref.isEmpty() && prefLeft >0){
+                    temp = tempPref;
+                    prefLeft--;
+                }
+
+                Collections.sort(temp);
+
+                //WebAvailability assignment = temp.get(0);
+                if(!temp.isEmpty()){
+                    assignments[currentTask] = temp.get(0).studentID;
+                }
+
+
+                //3. update availabilities
+                if(!availableStudents.isEmpty()){
+                    for(int j=0; j<availableStudents.size(); j++){
+                        availableStudents.get(j).availabilities.set(currentTask, 0);
+                        availableStudents.get(j).updateTotalAvailability();
+                    }
+                    for(int j=0; j<availabilityArray[0].length; j++){
+                        availabilityArray[currentTask][j] = 0;
+                    }
+                    if (!temp.isEmpty()) {
+                        availableStudents.remove(temp.get(0));
+                    }
+                    else{
+                        //availableStudents.remove(0);
+                    }
+
+                }
+
+
             }
 
-            int currentMin = numStudents+1;
-            int currentTask = 0;
-            for(int i=0; i<timeSlotAvailabilities.size(); i++){
-                if(timeSlotAvailabilities.get(i)<currentMin && timeSlotAvailabilities.get(i)!=0){
-                    currentMin = timeSlotAvailabilities.get(i);
-                    currentTask = i;
+
+            int currAssigned = 0;
+
+            for(int i=0; i<assignments.length; i++){
+                currAssigned++;
+            }
+            if(currAssigned < prevAssigned){
+                break;
+            }
+            prevAssigned = currAssigned;
+
+            //restore original variables
+            for(int i=0; i<numStudents; i++){
+                WebAvailability s = new WebAvailability(i+1,1);
+                for(int j=0; j<numSlots; j++){
+                    s.availabilities.add(0);
+                    s.availabilities.set(j,availableStudentsStatic.get(i).availabilities.get(j));
+                }
+                availableStudents.add(s);
+            }
+            for(int i=0; i<numSlots; i++){
+                for(int j=0; j<numStudents; j++){
+                    availabilityArray[i][j] = availabilityArrayStatic[i][j];
                 }
             }
-
-
-            //2. Find the least available student that can do currentTask
-            ArrayList<WebAvailability> temp = new ArrayList<WebAvailability>();
-            for(WebAvailability a : availableStudents){
-                if(a.availabilities.get(currentTask)!=0){
-                    temp.add(a);
-                }
+            for(int i=0; i<assignments.length; i++){
+                //assignments[i] = -1;
             }
-
-            Collections.sort(temp);
-
-            //WebAvailability assignment = temp.get(0);
-            if(!temp.isEmpty()){
-                assignments[currentTask] = temp.get(0).studentID;
-            }
-
-
-            //3. update availabilities
-            if(!availableStudents.isEmpty()){
-                for(int j=0; j<availableStudents.size(); j++){
-                    availableStudents.get(j).availabilities.set(currentTask, 0);
-                    availableStudents.get(j).updateTotalAvailability();
-                }
-                for(int j=0; j<availabilityArray[0].length; j++){
-                    availabilityArray[currentTask][j] = 0;
-                }
-                if (!temp.isEmpty()) {
-                    availableStudents.remove(temp.get(0));
-                }
-                else{
-                    availableStudents.remove(0);
-                }
-
-            }
-
-
+            System.out.println(Arrays.toString(assignments));
         }
 
 
+
+
+
         System.out.println(Arrays.toString(assignments));
+        //System.out.printf("Preferred time slots granted:%d", prefToSatisfy);
     }
 }

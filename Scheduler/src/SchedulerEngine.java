@@ -8,7 +8,7 @@ public class SchedulerEngine {
         System.out.println("Enter the number of time slots:");
         Scanner sc = new Scanner(System.in);
 
-        File in = new File("src/input.txt");
+        File in = new File("src/OH_new.txt");
         Scanner fsc = new Scanner(System.in);
         try{
             fsc = new Scanner(in);
