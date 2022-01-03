@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 
 /* Web Monitoring Scheduling Algorithm:
@@ -39,7 +40,18 @@ public class WebScheduler {
 
         System.out.println("Number of students:");
         Scanner sc = new Scanner(System.in);
-        int numStudents = sc.nextInt();
+
+        File in = new File("src/input.txt");
+        Scanner fsc = new Scanner(System.in);
+        try{
+            fsc = new Scanner(in);
+
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+        int numStudents = fsc.nextInt();
         ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
         for(int i=0; i<numStudents; i++){
             WebAvailability s = new WebAvailability(i+1,1);
@@ -53,7 +65,7 @@ public class WebScheduler {
         for(int i=0; i<numSlots; i++){
             System.out.printf("Enter student availabilities for time slot %d\n", i);
             for(int j=0; j<numStudents; j++){
-                int t = sc.nextInt();
+                int t = fsc.nextInt();
                 availableStudents.get(j).availabilities.set(i, t);
                 availabilityArray[i][j] = availableStudents.get(j).availabilities.get(i);
                 coverages[i]++;
