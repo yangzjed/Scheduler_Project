@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-
 /* Web Monitoring Scheduling Algorithm:
 
 
@@ -38,6 +37,39 @@ public class WebScheduler {
 
     }
 
+    private void initializeStudents(ArrayList<WebAvailability> students, int numStudents){
+        for(int i=0; i<numStudents; i++){
+            WebAvailability s = new WebAvailability(i+1,1);
+            for(int j=0; j<numSlots; j++){
+                s.availabilities.add(0);
+            }
+            students.add(s);
+        }
+    }
+
+    private int findLeastPopularSlot(int numStudents){
+        ArrayList<Integer> timeSlotAvailabilities = new ArrayList<Integer>();
+        for(int i=0; i<availabilityArray.length; i++){
+            int totalStudents = 0;
+            for(int j=0; j<availabilityArray[0].length; j++){
+                if(availabilityArray[i][j]!=0){
+                    totalStudents++;
+                }
+            }
+            timeSlotAvailabilities.add(totalStudents);
+        }
+
+        int currentMin = numStudents+1;
+        int currentTask = 0;
+        for(int i=0; i<timeSlotAvailabilities.size(); i++){
+            if(timeSlotAvailabilities.get(i)<currentMin && timeSlotAvailabilities.get(i)!=0){
+                currentMin = timeSlotAvailabilities.get(i);
+                currentTask = i;
+            }
+        }
+        return currentTask;
+    }
+
     public void WebSchedule(){
 
         System.out.println("Number of students:");
@@ -57,16 +89,8 @@ public class WebScheduler {
         ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
         ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
 
-        for(int i=0; i<numStudents; i++){
-            WebAvailability s = new WebAvailability(i+1,1);
-            WebAvailability s2 = new WebAvailability(i+1,1);
-            for(int j=0; j<numSlots; j++){
-                s.availabilities.add(0);
-                s2.availabilities.add(0);
-            }
-            availableStudents.add(s);
-            availableStudentsStatic.add(s2);
-        }
+        initializeStudents(availableStudents,numStudents);
+        initializeStudents(availableStudentsStatic,numStudents);
 
         //set up availabilityArray and coverages
         for(int i=0; i<numSlots; i++){
@@ -92,27 +116,7 @@ public class WebScheduler {
             while(!availableStudents.isEmpty()){
                 //TODO: Implement assignment algorithm 2
 
-                //1. find the time slot with least available students;
-                ArrayList<Integer> timeSlotAvailabilities = new ArrayList<Integer>();
-                for(int i=0; i<availabilityArray.length; i++){
-                    int totalStudents = 0;
-                    for(int j=0; j<availabilityArray[0].length; j++){
-                        if(availabilityArray[i][j]!=0){
-                            totalStudents++;
-                        }
-                    }
-                    timeSlotAvailabilities.add(totalStudents);
-                }
-
-                int currentMin = numStudents+1;
-                int currentTask = 0;
-                for(int i=0; i<timeSlotAvailabilities.size(); i++){
-                    if(timeSlotAvailabilities.get(i)<currentMin && timeSlotAvailabilities.get(i)!=0){
-                        currentMin = timeSlotAvailabilities.get(i);
-                        currentTask = i;
-                    }
-                }
-
+                int currentTask = findLeastPopularSlot(numStudents);
 
                 //2. Find the least available student that can do currentTask
                 ArrayList<WebAvailability> temp = new ArrayList<WebAvailability>();
@@ -188,7 +192,7 @@ public class WebScheduler {
             for(int i=0; i<assignments.length; i++){
                 //assignments[i] = -1;
             }
-            System.out.println(Arrays.toString(assignments));
+            //System.out.println(Arrays.toString(assignments));
         }
 
 
