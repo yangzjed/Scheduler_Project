@@ -19,22 +19,33 @@ while there are still unassigned students:
  */
 
 public class WebScheduler {
+    public static int MAX_SLOTS = 1000;
+    public static String INPUT_FILE_PATH = "";
+
     public int numSlots;
     int[][] availabilityArray; //max. 20 students
     int[][] availabilityArrayStatic;
     int[] coverages;
     int[] assignments;
 
-    WebScheduler(int numSlots){
-        this.numSlots = numSlots;
-        this.availabilityArray = new int[numSlots][20];
-        this.availabilityArrayStatic = new int[numSlots][20];
-        this.coverages = new int[numSlots];
+    WebScheduler(String inputfile){
+        INPUT_FILE_PATH = inputfile;
+        this.numSlots = -1;
+        //this.coverages = new int[numSlots];
+        this.assignments = new int[MAX_SLOTS];
+        for(int i=0; i<MAX_SLOTS; i++){
+            this.assignments[i]=-1;
+        }
+
+    }
+
+    private void initializeScheduler(int numStudents, int numSlots){
+        this.availabilityArray = new int[numSlots][numStudents];
+        this.availabilityArrayStatic = new int[numSlots][numStudents];
         this.assignments = new int[numSlots];
         for(int i=0; i<numSlots; i++){
             this.assignments[i]=-1;
         }
-
     }
 
     private void initializeStudents(ArrayList<WebAvailability> students, int numStudents){
@@ -70,12 +81,19 @@ public class WebScheduler {
         return currentTask;
     }
 
+    private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask){
+        for(int j=0; j<availableStudents.size(); j++){
+            availableStudents.get(j).availabilities.set(currentTask, 0);
+            availableStudents.get(j).updateTotalAvailability();
+        }
+        for(int j=0; j<availabilityArray[0].length; j++){
+            availabilityArray[currentTask][j] = 0;
+        }
+    }
+
     public void WebSchedule(){
 
-        System.out.println("Number of students:");
-        Scanner sc = new Scanner(System.in);
-
-        File in = new File("src/input.txt");
+        File in = new File(INPUT_FILE_PATH);
         Scanner fsc = new Scanner(System.in);
         try{
             fsc = new Scanner(in);
@@ -86,6 +104,8 @@ public class WebScheduler {
         }
 
         int numStudents = fsc.nextInt();
+        this.numSlots = fsc.nextInt();
+        initializeScheduler(numStudents, numSlots);
         ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
         ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
 
@@ -94,17 +114,17 @@ public class WebScheduler {
 
         //set up availabilityArray and coverages
         for(int i=0; i<numSlots; i++){
-            System.out.printf("Enter student availabilities for time slot %d\n", i);
+            //System.out.printf("Enter student availabilities for time slot %d\n", i);
             for(int j=0; j<numStudents; j++){
                 int t = fsc.nextInt();
                 availableStudents.get(j).availabilities.set(i, t);
                 availableStudentsStatic.get(j).availabilities.set(i,t);
                 availabilityArray[i][j] = availableStudents.get(j).availabilities.get(i);
                 availabilityArrayStatic[i][j] = availableStudents.get(j).availabilities.get(i);
-                coverages[i]++;
-                System.out.printf("%d ",availabilityArray[i][j]);
+                //coverages[i]++;
+                //System.out.printf("%d ",availabilityArray[i][j]);
             }
-            System.out.println();
+            //System.out.println();
         }
 
 
@@ -136,7 +156,6 @@ public class WebScheduler {
                 }
 
                 Collections.sort(temp);
-
                 //WebAvailability assignment = temp.get(0);
                 if(!temp.isEmpty()){
                     assignments[currentTask] = temp.get(0).studentID;
@@ -145,22 +164,11 @@ public class WebScheduler {
 
                 //3. update availabilities
                 if(!availableStudents.isEmpty()){
-                    for(int j=0; j<availableStudents.size(); j++){
-                        availableStudents.get(j).availabilities.set(currentTask, 0);
-                        availableStudents.get(j).updateTotalAvailability();
-                    }
-                    for(int j=0; j<availabilityArray[0].length; j++){
-                        availabilityArray[currentTask][j] = 0;
-                    }
+                    updateAvailabilities(availableStudents, currentTask);
                     if (!temp.isEmpty()) {
                         availableStudents.remove(temp.get(0));
                     }
-                    else{
-                        //availableStudents.remove(0);
-                    }
-
                 }
-
 
             }
 
@@ -171,6 +179,7 @@ public class WebScheduler {
                 currAssigned++;
             }
             if(currAssigned < prevAssigned){
+                //System.out.println("Break");
                 break;
             }
             prevAssigned = currAssigned;
@@ -189,12 +198,15 @@ public class WebScheduler {
                     availabilityArray[i][j] = availabilityArrayStatic[i][j];
                 }
             }
+
+            if(prefToSatisfy==numStudents-1){
+                break;
+            }
             for(int i=0; i<assignments.length; i++){
-                //assignments[i] = -1;
+                assignments[i] = -1;
             }
             //System.out.println(Arrays.toString(assignments));
         }
-
 
 
 
