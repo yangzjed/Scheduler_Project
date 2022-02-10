@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/OH_new.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/OH_returning.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/SchedulerEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Scheduler/SchedulerEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/WebScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Scheduler/WebScheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/manual_setup.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OH_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/OH_new.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OH_returning.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/OH_returning.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchedulerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchedulerEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WebScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manual_setup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/manual_setup.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

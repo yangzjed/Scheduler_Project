@@ -5,8 +5,13 @@ This application assigns n people to m distinct tasks given each person's availa
 Input format:
 
 [# students] [# tasks]
+
 [student availabilities for task 1]
+
 [student availabilities for task 2]
+
 ...
 
-where 0 means unavailable, 1 means available, and 2 means preferred.
+where each entry of availability is encoded as follows: 0 -> unavailable, 1 -> available, 2 -> preferred.
+
+Input files are stored in src/data. To change the input file used, edit SchedulerEngine.main.
