@@ -4,7 +4,7 @@ This application assigns n people to m distinct tasks given each person's availa
 
 Input format:
 
-[# students] [# tasks]
+[n, # students] [m, # tasks]
 
 [student availabilities for task 1]
 
