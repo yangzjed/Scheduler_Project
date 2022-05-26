@@ -260,6 +260,7 @@ public class WebScheduler {
 
         System.out.println("Task assignments:");
         System.out.println(Arrays.toString(assignments));
+        System.out.printf("Time slots assigned: %d/%d\n", numSlots-countUnassignedSlots(assignments), numSlots);
         System.out.printf("Preferred time slots granted:%d", countSatisfiedPreferences(assignments));
     }
 }

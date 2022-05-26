@@ -15,3 +15,5 @@ Input format:
 where each entry of availability is encoded as follows: 0 -> unavailable, 1 -> available, 2 -> preferred.
 
 Input files are stored in src/data. To change the input file used, edit SchedulerEngine.main.
+
+Output format: Array of task assignments, where element array[i] represents the student that performs task i. Student numbering begins at 1.
