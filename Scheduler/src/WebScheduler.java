@@ -39,6 +39,16 @@ public class WebScheduler {
 
     }
 
+    private int countSatisfiedPreferences(int assignments[]){
+        int result = 0;
+        for(int i=0; i<numSlots; i++){
+            if(availabilityArrayStatic[i][assignments[i]-1]==2){
+                result++;
+            }
+        }
+        return result;
+    }
+
     private void initializeScheduler(int numStudents, int numSlots){
         this.availabilityArray = new int[numSlots][numStudents];
         this.availabilityArrayStatic = new int[numSlots][numStudents];
@@ -208,10 +218,21 @@ public class WebScheduler {
             //System.out.println(Arrays.toString(assignments));
         }
 
+        //swap students if more preferences can be satisfied after swap
+        for(int i=0; i<numSlots; i++){
+            for(int j=i; j<numSlots; j++){
+                if(availabilityArrayStatic[i][assignments[j]-1]!=0 && availabilityArrayStatic[j][assignments[i]-1]!=0){
+                    if(availabilityArrayStatic[i][assignments[j]-1] + availabilityArrayStatic[j][assignments[i]-1] > availabilityArrayStatic[i][assignments[i]-1] + availabilityArrayStatic[j][assignments[j]-1]){
+                        int temp = assignments[i];
+                        assignments[i] = assignments[j];
+                        assignments[j] = temp;
+                    }
+                }
+            }
+        }
 
-
-
+        System.out.println("Task assignments:");
         System.out.println(Arrays.toString(assignments));
-        //System.out.printf("Preferred time slots granted:%d", prefToSatisfy);
+        System.out.printf("Preferred time slots granted:%d", countSatisfiedPreferences(assignments));
     }
 }
