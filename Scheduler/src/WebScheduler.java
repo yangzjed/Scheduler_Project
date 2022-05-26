@@ -27,6 +27,7 @@ public class WebScheduler {
     int[][] availabilityArrayStatic;
     int[] coverages;
     int[] assignments;
+    int[] previousAssignments;
 
     WebScheduler(String inputfile){
         INPUT_FILE_PATH = inputfile;
@@ -39,9 +40,28 @@ public class WebScheduler {
 
     }
 
+    private void copyIntArray(int[] src, int[] dst, int len){
+        for(int i=0; i<len; i++){
+            dst[i] = src[i];
+        }
+    }
+
+    private int countUnassignedSlots(int assignments[]){
+        int result = 0;
+        for(int i=0; i<numSlots; i++){
+            if(assignments[i]<=0){
+                result++;
+            }
+        }
+        return result;
+    }
+
     private int countSatisfiedPreferences(int assignments[]){
         int result = 0;
         for(int i=0; i<numSlots; i++){
+            if(assignments[i]<=0){
+                continue;
+            }
             if(availabilityArrayStatic[i][assignments[i]-1]==2){
                 result++;
             }
@@ -53,6 +73,8 @@ public class WebScheduler {
         this.availabilityArray = new int[numSlots][numStudents];
         this.availabilityArrayStatic = new int[numSlots][numStudents];
         this.assignments = new int[numSlots];
+        previousAssignments = new int[numSlots];
+        Arrays.fill(previousAssignments, -1);
         for(int i=0; i<numSlots; i++){
             this.assignments[i]=-1;
         }
@@ -178,21 +200,20 @@ public class WebScheduler {
                     if (!temp.isEmpty()) {
                         availableStudents.remove(temp.get(0));
                     }
+                    else{
+                        availableStudents.remove(0);
+                    }
                 }
 
             }
 
 
-            int currAssigned = 0;
-
-            for(int i=0; i<assignments.length; i++){
-                currAssigned++;
-            }
-            if(currAssigned < prevAssigned){
+            if(countUnassignedSlots(assignments) > countUnassignedSlots(previousAssignments)){
                 //System.out.println("Break");
+                copyIntArray(previousAssignments, assignments, assignments.length);
                 break;
             }
-            prevAssigned = currAssigned;
+
 
             //restore original variables
             for(int i=0; i<numStudents; i++){
@@ -212,6 +233,9 @@ public class WebScheduler {
             if(prefToSatisfy==numStudents-1){
                 break;
             }
+            //System.out.println(Arrays.toString(assignments));
+            copyIntArray(assignments, previousAssignments, assignments.length);
+
             for(int i=0; i<assignments.length; i++){
                 assignments[i] = -1;
             }
@@ -221,6 +245,9 @@ public class WebScheduler {
         //swap students if more preferences can be satisfied after swap
         for(int i=0; i<numSlots; i++){
             for(int j=i; j<numSlots; j++){
+                if(assignments[i]<=0 || assignments[j] <=0){
+                    continue;
+                }
                 if(availabilityArrayStatic[i][assignments[j]-1]!=0 && availabilityArrayStatic[j][assignments[i]-1]!=0){
                     if(availabilityArrayStatic[i][assignments[j]-1] + availabilityArrayStatic[j][assignments[i]-1] > availabilityArrayStatic[i][assignments[i]-1] + availabilityArrayStatic[j][assignments[j]-1]){
                         int temp = assignments[i];
