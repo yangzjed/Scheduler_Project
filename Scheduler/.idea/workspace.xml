@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="" />
+    <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/continuous_time.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/test1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/TimeDiscretize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/WebAvailability.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scheduler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Scheduler.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/SchedulerEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/WebAvailability.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/WebScheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/OH_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/OH_returning.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/manual_setup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchedulerEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WebAvailability.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WebScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/OH_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OH_new.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/OH_returning.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OH_returning.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/manual_setup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/manual_setup.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,16 +68,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\src\data" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.SchedulerEngine">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="SchedulerEngine" />
+      <option name="MAIN_CLASS_NAME" value="main.SchedulerEngine" />
       <module name="Scheduler" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -45,8 +91,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SchedulerEngine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SchedulerEngine" />
+      <module name="Scheduler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TimeDiscretize" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TimeDiscretize" />
+      <module name="Scheduler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebSchedulerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Scheduler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="WebSchedulerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SchedulerEngine" />
+        <item itemvalue="JUnit.WebSchedulerTest" />
+        <item itemvalue="Application.TimeDiscretize" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -69,19 +141,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WebScheduler.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WebScheduler.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WebScheduler.java</url>
-          <line>173</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/main/java/TimeDiscretize.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
