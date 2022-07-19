@@ -25,6 +25,7 @@ public class WebScheduler {
   public static String INPUT_FILE_PATH = "";
 
   public int numSlots;
+  public int numStudents;
   int[][] availabilityArray; //max. 20 students
   int[][] availabilityArrayStatic;
   int[] coverages;
@@ -118,7 +119,7 @@ public class WebScheduler {
 
   private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask){
     for(int j=0; j<availableStudents.size(); j++){
-      availableStudents.get(j).availabilities.set(currentTask, 0);
+      availableStudents.get(j).availabilities.set(currentTask, 0);//TODO: for continuous scheduling, set currentTask, ..., currentTask+d to 0
       availableStudents.get(j).updateTotalAvailability();
     }
     for(int j=0; j<availabilityArray[0].length; j++){
@@ -126,8 +127,7 @@ public class WebScheduler {
     }
   }
 
-  public void WebSchedule(){
-
+  private void generateDiscreteAvailabilityArrays(){
     File in = new File(INPUT_FILE_PATH);
     Scanner fsc = new Scanner(System.in);
     try{
@@ -138,24 +138,45 @@ public class WebScheduler {
       e.printStackTrace();
     }
 
-    int numStudents = fsc.nextInt();
+    this.numStudents = fsc.nextInt();
     this.numSlots = fsc.nextInt();
     initializeScheduler(numStudents, numSlots);
-    ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
-    ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
-
-    initializeStudents(availableStudents,numStudents);
-    initializeStudents(availableStudentsStatic,numStudents);
 
     //set up availabilityArray and coverages
     for(int i=0; i<numSlots; i++){
       //System.out.printf("Enter student availabilities for time slot %d\n", i);
       for(int j=0; j<numStudents; j++){
         int t = fsc.nextInt();
-        availableStudents.get(j).availabilities.set(i, t);
-        availableStudentsStatic.get(j).availabilities.set(i,t);
-        availabilityArray[i][j] = availableStudents.get(j).availabilities.get(i);
-        availabilityArrayStatic[i][j] = availableStudents.get(j).availabilities.get(i);
+        availabilityArray[i][j] = t;
+        availabilityArrayStatic[i][j] = t;
+        //coverages[i]++;
+        //System.out.printf("%d ",availabilityArray[i][j]);
+      }
+      //System.out.println();
+    }
+
+  }
+
+  private void generateContinuousAvailabilityArrays(){
+
+  }
+
+  public void WebSchedule(){
+
+    generateDiscreteAvailabilityArrays();
+
+
+    ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
+    ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
+
+    initializeStudents(availableStudents,numStudents);
+    initializeStudents(availableStudentsStatic,numStudents);
+
+    for(int i=0; i<numSlots; i++){
+      //System.out.printf("Enter student availabilities for time slot %d\n", i);
+      for(int j=0; j<numStudents; j++){
+        availableStudents.get(j).availabilities.set(i, availabilityArray[i][j]);
+        availableStudentsStatic.get(j).availabilities.set(i,availabilityArray[i][j]);
         //coverages[i]++;
         //System.out.printf("%d ",availabilityArray[i][j]);
       }

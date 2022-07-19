@@ -5,42 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/continuous_time.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/TimeDiscretize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/WebAvailability.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/test1_studentlist.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ContinuousScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scheduler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Scheduler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/SchedulerEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/WebAvailability.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/WebScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/OH_new.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/OH_returning.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Scheduler/data/manual_setup.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchedulerEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WebAvailability.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WebScheduler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/OH_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OH_new.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/OH_returning.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OH_returning.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/manual_setup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/manual_setup.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/WebSchedulerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebSchedulerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +56,7 @@
       <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\src\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SchedulerEngine">
+  <component name="RunManager" selected="JUnit.WebSchedulerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="main.SchedulerEngine" />
       <module name="Scheduler" />
@@ -116,8 +91,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SchedulerEngine" />
         <item itemvalue="JUnit.WebSchedulerTest" />
+        <item itemvalue="Application.SchedulerEngine" />
         <item itemvalue="Application.TimeDiscretize" />
         <item itemvalue="Application.Main" />
       </list>
