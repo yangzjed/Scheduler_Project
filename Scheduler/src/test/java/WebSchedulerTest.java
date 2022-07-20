@@ -30,4 +30,14 @@ public class WebSchedulerTest {
   }
 
 
+  @Test
+  public void test4(){
+    WebScheduler s = new WebScheduler("data/continuous_test.txt");
+    s.WebSchedule();
+    assertEquals(2, s.assignments[7]);
+  }
+
+
+
+
 }
