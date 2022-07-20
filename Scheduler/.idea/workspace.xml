@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/testSimple.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WebScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WebScheduler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/WebSchedulerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebSchedulerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +54,7 @@
       <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\src\data" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WebSchedulerTest.test4">
+  <component name="RunManager" selected="Application.SchedulerEngine">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="main.SchedulerEngine" />
       <module name="Scheduler" />
@@ -93,9 +99,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WebSchedulerTest.test4" />
-        <item itemvalue="JUnit.WebSchedulerTest" />
         <item itemvalue="Application.SchedulerEngine" />
+        <item itemvalue="JUnit.WebSchedulerTest" />
+        <item itemvalue="JUnit.WebSchedulerTest.test4" />
         <item itemvalue="Application.TimeDiscretize" />
         <item itemvalue="Application.Main" />
       </list>

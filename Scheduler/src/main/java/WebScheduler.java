@@ -225,7 +225,7 @@ public class WebScheduler {
         Collections.sort(temp);
         //WebAvailability assignment = temp.get(0);
         if(temp.isEmpty()){
-          //continue;
+          break;
         }
         if(!temp.isEmpty()){
           assignments[currentTask] = temp.get(0).studentID;

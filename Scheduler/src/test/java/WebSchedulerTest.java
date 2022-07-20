@@ -38,6 +38,15 @@ public class WebSchedulerTest {
   }
 
 
+  @Test
+  public void testSample(){
+    WebScheduler s = new WebScheduler("data/test1.txt");
+    s.WebSchedule();
+    assert(s.numPreferencesSatisifed==1);
+  }
+
+
+
 
 
 }
