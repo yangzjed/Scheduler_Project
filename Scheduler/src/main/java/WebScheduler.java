@@ -117,7 +117,7 @@ public class WebScheduler {
     return currentTask;
   }
 
-  private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask){
+  private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask, int currentStudent){
     for(int j=0; j<availableStudents.size(); j++){
       availableStudents.get(j).availabilities.set(currentTask, 0);//TODO: for continuous scheduling, set currentTask, ..., currentTask+d to 0
       availableStudents.get(j).updateTotalAvailability();
@@ -125,6 +125,11 @@ public class WebScheduler {
     for(int j=0; j<availabilityArray[0].length; j++){
       availabilityArray[currentTask][j] = 0;
     }
+
+    for(int j=0; j<availabilityArray.length; j++){
+      availabilityArray[j][currentStudent-1] = 0;
+    }
+
   }
 
   private void generateDiscreteAvailabilityArrays(){
@@ -158,7 +163,13 @@ public class WebScheduler {
   }
 
   private void generateContinuousAvailabilityArrays(){
-
+    try {
+      availabilityArray = TimeDiscretize.createAvailabilityArray(INPUT_FILE_PATH);
+      availabilityArrayStatic = TimeDiscretize.createAvailabilityArray(INPUT_FILE_PATH);
+      initializeScheduler(TimeDiscretize.NUM_STUDENTS, TimeDiscretize.NUM_TIME_SEGMENTS);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 
   public void WebSchedule(){
@@ -213,6 +224,9 @@ public class WebScheduler {
 
         Collections.sort(temp);
         //WebAvailability assignment = temp.get(0);
+        if(temp.isEmpty()){
+          //continue;
+        }
         if(!temp.isEmpty()){
           assignments[currentTask] = temp.get(0).studentID;
         }
@@ -220,12 +234,16 @@ public class WebScheduler {
 
         //3. update availabilities
         if(!availableStudents.isEmpty()){
-          updateAvailabilities(availableStudents, currentTask);
+
           if (!temp.isEmpty()) {
+            int id = temp.get(0).studentID;
             availableStudents.remove(temp.get(0));
+            updateAvailabilities(availableStudents, currentTask, id);
           }
           else{
-            availableStudents.remove(0);
+            //int id = availableStudents.get(0).studentID;
+            //availableStudents.remove(0);
+            //updateAvailabilities(availableStudents, currentTask, id);
           }
         }
 

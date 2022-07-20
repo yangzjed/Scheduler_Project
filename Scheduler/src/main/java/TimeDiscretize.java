@@ -10,11 +10,13 @@ import java.util.Scanner;
 public class TimeDiscretize {
 
   public static final int NUM_TIME_SEGMENTS = 168;
+  public static int NUM_STUDENTS;
 
   public static int[][] createAvailabilityArray(String inputFile) throws FileNotFoundException {
     File in = new File(inputFile);
     Scanner fsc = new Scanner(in);
     int numStudents = fsc.nextInt();
+    NUM_STUDENTS = numStudents;
     fsc.nextLine();
 
     int[][] availabilityArray = new int[NUM_TIME_SEGMENTS][numStudents];
@@ -30,6 +32,7 @@ public class TimeDiscretize {
 
       }
     }
+    fsc.close();
 
 
     return availabilityArray;
