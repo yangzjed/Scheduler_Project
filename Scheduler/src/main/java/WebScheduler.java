@@ -23,6 +23,7 @@ while there are still unassigned students:
 public class WebScheduler {
   public static int MAX_SLOTS = 1000;
   public static String INPUT_FILE_PATH = "";
+  public static String STUDENT_INFO_FILE_PATH = "";
 
   public int numSlots;
   public int numStudents;
@@ -33,6 +34,8 @@ public class WebScheduler {
   int[] previousAssignments;
   public int numPreferencesSatisifed;
 
+  public boolean useStudentInfo = false;
+
   WebScheduler(String inputfile){
     INPUT_FILE_PATH = inputfile;
     this.numSlots = -1;
@@ -40,6 +43,21 @@ public class WebScheduler {
     this.assignments = new int[MAX_SLOTS];
     for(int i=0; i<MAX_SLOTS; i++){
       this.assignments[i]=-1;
+    }
+
+  }
+
+  public void addStudentInfo(String path, ArrayList<WebAvailability> students){
+    File f = new File(path);
+    try {
+      Scanner sc = new Scanner(f);
+      int i = 0;
+      while(sc.hasNextInt()){
+        students.get(i).numSlotsVolunteered = sc.nextInt();
+        i++;
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
 
   }
@@ -85,12 +103,17 @@ public class WebScheduler {
   }
 
   private void initializeStudents(ArrayList<WebAvailability> students, int numStudents){
+
     for(int i=0; i<numStudents; i++){
       WebAvailability s = new WebAvailability(i+1,1);
       for(int j=0; j<numSlots; j++){
         s.availabilities.add(0);
       }
       students.add(s);
+    }
+
+    if(useStudentInfo){
+      addStudentInfo("data/continuous_test_volunteeredBlocks.txt", students);
     }
   }
 
@@ -117,7 +140,7 @@ public class WebScheduler {
     return currentTask;
   }
 
-  private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask, int currentStudent){
+  private void updateAvailabilities(ArrayList<WebAvailability> availableStudents, int currentTask, int currentStudent, boolean studentRemoved){
     for(int j=0; j<availableStudents.size(); j++){
       availableStudents.get(j).availabilities.set(currentTask, 0);//TODO: for continuous scheduling, set currentTask, ..., currentTask+d to 0
       availableStudents.get(j).updateTotalAvailability();
@@ -126,9 +149,15 @@ public class WebScheduler {
       availabilityArray[currentTask][j] = 0;
     }
 
-    for(int j=0; j<availabilityArray.length; j++){
-      availabilityArray[j][currentStudent-1] = 0;
+    if(studentRemoved){
+      for(int j=0; j<availabilityArray.length; j++){
+        availabilityArray[j][currentStudent-1] = 0;
+      }
     }
+    else{
+      availabilityArray[currentTask][currentStudent-1] = 0;
+    }
+
 
   }
 
@@ -186,8 +215,8 @@ public class WebScheduler {
     for(int i=0; i<numSlots; i++){
       //System.out.printf("Enter student availabilities for time slot %d\n", i);
       for(int j=0; j<numStudents; j++){
-        availableStudents.get(j).availabilities.set(i, availabilityArray[i][j]);
-        availableStudentsStatic.get(j).availabilities.set(i,availabilityArray[i][j]);
+        availableStudents.get(j).availabilities.set(i, availabilityArrayStatic[i][j]);
+        availableStudentsStatic.get(j).availabilities.set(i,availabilityArrayStatic[i][j]);
         //coverages[i]++;
         //System.out.printf("%d ",availabilityArray[i][j]);
       }
@@ -236,9 +265,16 @@ public class WebScheduler {
         if(!availableStudents.isEmpty()){
 
           if (!temp.isEmpty()) {
+            temp.get(0).numSlotsVolunteered--;
             int id = temp.get(0).studentID;
-            availableStudents.remove(temp.get(0));
-            updateAvailabilities(availableStudents, currentTask, id);
+            if(temp.get(0).numSlotsVolunteered==0){
+              availableStudents.remove(temp.get(0));
+              updateAvailabilities(availableStudents, currentTask, id, true);
+            }
+            else{
+              updateAvailabilities(availableStudents, currentTask, id, false);
+            }
+
           }
           else{
             //int id = availableStudents.get(0).studentID;
@@ -258,6 +294,22 @@ public class WebScheduler {
 
 
       //restore original variables
+
+      availableStudents.clear();
+      initializeStudents(availableStudents,numStudents);
+      //initializeStudents(availableStudentsStatic,numStudents);
+
+      for(int i=0; i<numSlots; i++){
+        //System.out.printf("Enter student availabilities for time slot %d\n", i);
+        for(int j=0; j<numStudents; j++){
+          availableStudents.get(j).availabilities.set(i, availableStudentsStatic.get(j).availabilities.get(i));
+          //availableStudentsStatic.get(j).availabilities.set(i,availabilityArrayStatic[i][j]);
+          //coverages[i]++;
+          //System.out.printf("%d ",availabilityArray[i][j]);
+        }
+        //System.out.println();
+      }
+      /*
       for(int i=0; i<numStudents; i++){
         WebAvailability s = new WebAvailability(i+1,1);
         for(int j=0; j<numSlots; j++){
@@ -266,11 +318,15 @@ public class WebScheduler {
         }
         availableStudents.add(s);
       }
+      */
+
       for(int i=0; i<numSlots; i++){
         for(int j=0; j<numStudents; j++){
           availabilityArray[i][j] = availabilityArrayStatic[i][j];
         }
       }
+
+
 
       if(prefToSatisfy==numStudents-1){
         break;
