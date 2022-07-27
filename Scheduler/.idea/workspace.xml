@@ -7,11 +7,9 @@
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/continuous_test_volunteeredBlocks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/continuous_test_volunteeredBlocks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WebAvailability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebAvailability.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebSchedulerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/WebScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WebScheduler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,17 +128,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/WebScheduler.java</url>
-          <line>262</line>
+          <line>263</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/WebScheduler.java</url>
-          <line>241</line>
+          <line>242</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/WebScheduler.java</url>
-          <line>149</line>
+          <line>150</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

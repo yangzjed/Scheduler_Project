@@ -54,7 +54,8 @@ public class WebScheduler {
     try {
       Scanner sc = new Scanner(f);
       int i = 0;
-      while(sc.hasNextInt()){
+      while(sc.hasNext()){
+        students.get(i).name = sc.next();
         students.get(i).numSlotsVolunteered = sc.nextInt();
         i++;
       }

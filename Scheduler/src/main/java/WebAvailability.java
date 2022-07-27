@@ -7,6 +7,7 @@ public class WebAvailability implements Comparable<WebAvailability> {
   public int numSlotsVolunteered;
   public int totalAvailability;
   public int studentID;
+  public String name;
 
   WebAvailability(int studentID, int numSlotsVolunteered){
     availabilities = new ArrayList<Integer>();
