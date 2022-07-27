@@ -6,6 +6,7 @@ public class SchedulerEngine {
     WebScheduler test = new WebScheduler("data/continuous_test.txt");
     test.useStudentInfo = true;
 
+    test.setup();
     test.WebSchedule();
     System.out.println();
     System.out.println(Arrays.toString(test.assignments));

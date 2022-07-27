@@ -33,6 +33,8 @@ public class WebScheduler {
   int[] assignments;
   int[] previousAssignments;
   public int numPreferencesSatisifed;
+  public ArrayList<WebAvailability> availableStudentsStatic;
+  public ArrayList<WebAvailability> availableStudents;
 
   public boolean useStudentInfo = false;
 
@@ -201,13 +203,12 @@ public class WebScheduler {
     }
   }
 
-  public void WebSchedule(){
-
+  public void setup(){
     generateDiscreteAvailabilityArrays();
 
 
-    ArrayList<WebAvailability> availableStudents = new ArrayList<WebAvailability>();
-    ArrayList<WebAvailability> availableStudentsStatic = new ArrayList<WebAvailability>();
+    availableStudents = new ArrayList<WebAvailability>();
+    availableStudentsStatic = new ArrayList<WebAvailability>();
 
     initializeStudents(availableStudents,numStudents);
     initializeStudents(availableStudentsStatic,numStudents);
@@ -222,6 +223,12 @@ public class WebScheduler {
       }
       //System.out.println();
     }
+
+  }
+
+  public void WebSchedule(){
+
+    //setup();
 
 
     int prefToSatisfy = 0;
