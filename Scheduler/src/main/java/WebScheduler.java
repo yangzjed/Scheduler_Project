@@ -36,7 +36,10 @@ public class WebScheduler {
   public ArrayList<WebAvailability> availableStudentsStatic;
   public ArrayList<WebAvailability> availableStudents;
 
+  public ArrayList<int[]> taskTimes = new ArrayList<>(); //[startHour, endHour]
+
   public boolean useStudentInfo = false;
+  public boolean useTaskInfo = false;
 
   WebScheduler(String inputfile){
     INPUT_FILE_PATH = inputfile;
@@ -47,6 +50,21 @@ public class WebScheduler {
       this.assignments[i]=-1;
     }
 
+  }
+
+  public void addTaskInfo(String path){
+    File f = new File(path);
+    try {
+      Scanner sc = new Scanner(f);
+      int i = 0;
+      while(sc.hasNext()){
+        int[] taskTimeBounds =Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        taskTimes.add(TimeDiscretize.timeRange(taskTimeBounds));
+        i++;
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 
   public void addStudentInfo(String path, ArrayList<WebAvailability> students){
@@ -117,6 +135,9 @@ public class WebScheduler {
 
     if(useStudentInfo){
       addStudentInfo("data/continuous_test_volunteeredBlocks.txt", students);
+    }
+    if(useTaskInfo){
+      addTaskInfo("data/continuous_test_taskTimes.txt");
     }
   }
 

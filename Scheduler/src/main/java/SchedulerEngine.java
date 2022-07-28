@@ -5,6 +5,7 @@ public class SchedulerEngine {
 
     WebScheduler test = new WebScheduler("data/continuous_test.txt");
     test.useStudentInfo = true;
+    test.useTaskInfo = true;
 
     test.setup();
     test.WebSchedule();

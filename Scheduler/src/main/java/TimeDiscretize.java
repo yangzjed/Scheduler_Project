@@ -12,6 +12,15 @@ public class TimeDiscretize {
   public static final int NUM_TIME_SEGMENTS = 168;
   public static int NUM_STUDENTS;
 
+  public static int[] timeRange(int[] taskTimeBounds){
+    int[] range = new int[2];
+
+    int dayFactor = taskTimeBounds[0]-1;
+    range[0] = dayFactor * 24 + taskTimeBounds[1];
+    range[1] = dayFactor * 24 + taskTimeBounds[2];
+    return range;
+  }
+
   public static int[][] createAvailabilityArray(String inputFile) throws FileNotFoundException {
     File in = new File(inputFile);
     Scanner fsc = new Scanner(in);
