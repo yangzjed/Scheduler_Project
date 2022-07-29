@@ -388,7 +388,17 @@ public class WebScheduler {
     System.out.println("Task assignments:");
     System.out.println(Arrays.toString(assignments));
     System.out.printf("Time slots assigned: %d/%d\n", numSlots-countUnassignedSlots(assignments), numSlots);
-    System.out.printf("Preferred time slots granted:%d", countSatisfiedPreferences(assignments));
+    System.out.printf("Preferred time slots granted:%d\n", countSatisfiedPreferences(assignments));
     numPreferencesSatisifed = countSatisfiedPreferences(assignments);
+    if(useStudentInfo){
+      String[] names = new String[numSlots];
+      for(int i=0; i<numSlots; i++) {
+        if(assignments[i] !=-1){
+          names[i] = availableStudentsStatic.get(assignments[i]-1).name;
+        }
+
+      }
+      System.out.println(Arrays.toString(names));
+    }
   }
 }

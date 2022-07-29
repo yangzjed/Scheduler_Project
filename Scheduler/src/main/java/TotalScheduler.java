@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class TotalScheduler {
   public int numTasks;
   public int numStudents;
   public ArrayList<WebScheduler> allTasks;
   public HashMap<String, Integer> students;
-  public ArrayList<int[]> studentSchedules;
+  public ArrayList<ArrayList<int[]>> studentSchedules; //int[2]: [task number, time slot]
 
   public TotalScheduler(int numStudents, String[] taskInputFiles){
     numTasks = taskInputFiles.length;
@@ -19,10 +21,44 @@ public class TotalScheduler {
     }
   }
 
+  public List<int[]> addToSchedule(int student, int[] timeRange, int[] taskDescriptor){
+
+    ArrayList<int[]> studentSchedule = studentSchedules.get(student);
+    ArrayList<int[]> conflicts = new ArrayList<>();
+
+    for(int i=timeRange[0]; i<=timeRange[1]; i++){
+      if(studentSchedule.get(i)[0]!=0){
+        if((i!=0) && Arrays.equals(studentSchedule.get(i), studentSchedule.get(i - 1))){
+          int[] conflict = new int[2];
+          conflict[0] = studentSchedule.get(i)[0];
+          conflict[1] = studentSchedule.get(i)[1];
+          conflicts.add(conflict);
+        }
+
+      }
+    }
+
+    if(!conflicts.isEmpty()){
+      return conflicts;
+    }
+
+    for(int i=timeRange[0]; i<=timeRange[1]; i++){
+      studentSchedule.set(i, taskDescriptor);
+    }
+
+    return new ArrayList<int[]>();
+  }
+
   public void removeConflicts(){
     //TODO: implement time conflict resolution
+
+    //create initial student schedules
     for(int i=0; i<numStudents; i++){
-      studentSchedules.add(new int[168]);
+      ArrayList<int[]> schedule = new ArrayList<>();
+      for(int j=0; j<168; j++){
+        schedule.add(new int[2]);
+      }
+      studentSchedules.add(schedule);
     }
 
 
@@ -31,9 +67,22 @@ public class TotalScheduler {
     for(WebScheduler s : allTasks){
       for(WebAvailability w : s.availableStudentsStatic){
         int studentNum = students.get(w.name);
-
       }
     }
+  }
+
+  public static void main(String[] args){
+    int[] test = new int[2];
+    test[0] = 3;
+    test[1] = 4;
+
+    ArrayList<int[]> a = new ArrayList<>();
+    a.add(new int[2]);
+    a.add(new int[2]);
+    a.set(0, test);
+    a.set(1, test);
+    test[0] = 1;
+
   }
 
 

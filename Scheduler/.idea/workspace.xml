@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/continuous_test_taskTimes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SchedulerEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TimeDiscretize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TimeDiscretize.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SchedulerEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TimeDiscretize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TimeDiscretize.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/WebScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WebScheduler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,15 +50,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.WebSchedulerTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="main.SchedulerEngine" />
-      <module name="Scheduler" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SchedulerEngine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SchedulerEngine" />
       <module name="Scheduler" />
@@ -73,6 +59,13 @@
     </configuration>
     <configuration name="TimeDiscretize" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TimeDiscretize" />
+      <module name="Scheduler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TotalScheduler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TotalScheduler" />
       <module name="Scheduler" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -101,9 +94,9 @@
       <list>
         <item itemvalue="JUnit.WebSchedulerTest" />
         <item itemvalue="Application.SchedulerEngine" />
+        <item itemvalue="Application.TotalScheduler" />
         <item itemvalue="Application.TimeDiscretize" />
         <item itemvalue="JUnit.WebSchedulerTest.test4" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -143,6 +136,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/WebScheduler.java</url>
           <line>171</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/TotalScheduler.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
