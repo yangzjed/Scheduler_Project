@@ -64,10 +64,25 @@ public class TotalScheduler {
 
     //build student schedules, removing conflicts as necessary
     int numStudents = studentSchedules.size();
+    int i = 0;
+    int j = 0;
     for(WebScheduler s : allTasks){
       for(WebAvailability w : s.availableStudentsStatic){
         int studentNum = students.get(w.name);
+        for(int k=0; k<w.availabilities.size(); k++){
+          if(w.availabilities.get(k) != 0){
+            int[] taskDescriptor = new int[2];
+            taskDescriptor[0] = i;
+            taskDescriptor[1] = k;
+            List<int[]> res = addToSchedule(studentNum, s.taskTimes.get(j), taskDescriptor);
+            if(!res.isEmpty()){
+              //conflict found
+            }
+          }
+        }
+        j++;
       }
+      i++;
     }
   }
 
