@@ -22,8 +22,9 @@ while there are still unassigned students:
 
 public class WebScheduler {
   public static int MAX_SLOTS = 1000;
-  public static String INPUT_FILE_PATH = "";
-  public static String STUDENT_INFO_FILE_PATH = "";
+  public String INPUT_FILE_PATH = "";
+  public String STUDENT_INFO_FILE_PATH = "";
+  public String TASK_INFO_FILE_PATH = "";
 
   public int numSlots;
   public int numStudents;
@@ -50,6 +51,16 @@ public class WebScheduler {
       this.assignments[i]=-1;
     }
 
+  }
+
+  public int countStudents(int slotNum){
+    int count = 0;
+    for(int i=0; i<numStudents; i++){
+      if(availabilityArrayStatic[slotNum][i]!=0){
+        count++;
+      }
+    }
+    return count;
   }
 
   public void addTaskInfo(String path){
@@ -134,10 +145,10 @@ public class WebScheduler {
     }
 
     if(useStudentInfo){
-      addStudentInfo("data/continuous_test_volunteeredBlocks.txt", students);
+      addStudentInfo(STUDENT_INFO_FILE_PATH, students);
     }
     if(useTaskInfo){
-      addTaskInfo("data/continuous_test_taskTimes.txt");
+      addTaskInfo(TASK_INFO_FILE_PATH);
     }
   }
 
@@ -259,7 +270,6 @@ public class WebScheduler {
       int prefLeft = prefToSatisfy;
       //assign students
       while(!availableStudents.isEmpty()){
-        //TODO: Implement assignment algorithm 2
 
         int currentTask = findLeastPopularSlot(numStudents);
 

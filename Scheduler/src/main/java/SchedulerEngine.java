@@ -7,6 +7,9 @@ public class SchedulerEngine {
     test.useStudentInfo = true;
     test.useTaskInfo = true;
 
+    test.STUDENT_INFO_FILE_PATH = "data/continuous_test_volunteeredBlocks.txt";
+    test.TASK_INFO_FILE_PATH = "data/continuous_test_taskTimes.txt";
+
     test.setup();
     test.WebSchedule();
     System.out.println();
