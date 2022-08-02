@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/TotalSchedulerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/TotalSchedulerTest1/TaskB_array.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/TotalSchedulerTest1/TaskB_array.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WebScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TotalScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TotalScheduler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,16 +49,9 @@
       <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\src\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TotalScheduler">
+  <component name="RunManager" selected="JUnit.TotalSchedulerTest">
     <configuration name="SchedulerEngine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SchedulerEngine" />
-      <module name="Scheduler" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TimeDiscretize" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TimeDiscretize" />
       <module name="Scheduler" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -68,6 +60,25 @@
     <configuration name="TotalScheduler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TotalScheduler" />
       <module name="Scheduler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TotalSchedulerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Scheduler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TotalSchedulerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TotalSchedulerTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Scheduler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TotalSchedulerTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,23 +92,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebSchedulerTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Scheduler" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="WebSchedulerTest" />
-      <option name="METHOD_NAME" value="test4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TotalSchedulerTest" />
+        <item itemvalue="JUnit.TotalSchedulerTest.test1" />
         <item itemvalue="Application.TotalScheduler" />
         <item itemvalue="JUnit.WebSchedulerTest" />
         <item itemvalue="Application.SchedulerEngine" />
-        <item itemvalue="Application.TimeDiscretize" />
-        <item itemvalue="JUnit.WebSchedulerTest.test4" />
       </list>
     </recent_temporary>
   </component>

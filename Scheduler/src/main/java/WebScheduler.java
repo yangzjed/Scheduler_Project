@@ -32,6 +32,7 @@ public class WebScheduler {
   int[][] availabilityArrayStatic;
   int[] coverages;
   int[] assignments;
+  String[] assignmentsNames;
   int[] previousAssignments;
   public int numPreferencesSatisifed;
   public ArrayList<WebAvailability> availableStudentsStatic;
@@ -47,6 +48,7 @@ public class WebScheduler {
     this.numSlots = -1;
     //this.coverages = new int[numSlots];
     this.assignments = new int[MAX_SLOTS];
+    this.assignmentsNames = new String[MAX_SLOTS];
     for(int i=0; i<MAX_SLOTS; i++){
       this.assignments[i]=-1;
     }
@@ -405,6 +407,7 @@ public class WebScheduler {
       for(int i=0; i<numSlots; i++) {
         if(assignments[i] !=-1){
           names[i] = availableStudentsStatic.get(assignments[i]-1).name;
+          assignmentsNames[i] = names[i];
         }
 
       }
