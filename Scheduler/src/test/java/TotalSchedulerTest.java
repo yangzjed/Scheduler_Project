@@ -30,15 +30,18 @@ public class TotalSchedulerTest {
 
   @Test
   void test2(){
-    String[] taskInputFiles =  new String[1];
+    String[] taskInputFiles =  new String[2];
     taskInputFiles[0] = ROOT_DIRECTORY + "TotalSchedulerTest2/OH_array.txt";
-    String[] taskTimeFiles = new String[1];
+    taskInputFiles[1] = ROOT_DIRECTORY + "TotalSchedulerTest2/Ed_array.txt";
+    String[] taskTimeFiles = new String[2];
     taskTimeFiles[0] = ROOT_DIRECTORY + "TotalSchedulerTest2/OH_times.txt";
-    String[] taskStudentFiles = new String[1];
+    taskTimeFiles[1] = ROOT_DIRECTORY + "TotalSchedulerTest2/Ed_times.txt";
+    String[] taskStudentFiles = new String[2];
     taskStudentFiles[0] = ROOT_DIRECTORY + "TotalSchedulerTest2/OH_students.txt";
+    taskStudentFiles[1] = ROOT_DIRECTORY + "TotalSchedulerTest2/Ed_students.txt";
 
 
-    TotalScheduler scheduler = new TotalScheduler(13, taskInputFiles, taskTimeFiles, taskStudentFiles, ROOT_DIRECTORY + "TotalSchedulerTest2/StudentList.txt");
+    TotalScheduler scheduler = new TotalScheduler(14, taskInputFiles, taskTimeFiles, taskStudentFiles, ROOT_DIRECTORY + "TotalSchedulerTest2/StudentList.txt");
     scheduler.schedule();
 
   }
