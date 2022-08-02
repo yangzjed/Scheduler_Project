@@ -1,26 +1,48 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class TotalScheduler {
+  public static final String ROOT_DIRECTORY = "data/TotalSchedulerTest1/";
+
   public int numTasks;
   public int numStudents;
   public ArrayList<WebScheduler> allTasks;
-  public HashMap<String, Integer> students;
-  public ArrayList<ArrayList<int[]>> studentSchedules; //int[2]: [task number, time slot]
+  public HashMap<String, Integer> students = new HashMap<>();
+  public ArrayList<ArrayList<int[]>> studentSchedules = new ArrayList<>(); //int[2]: [task number, time slot]
 
 
-  public TotalScheduler(int numStudents, String[] taskInputFiles, String[] taskTimeFiles, String[] taskStudentFiles, String studentListFile){
+  public TotalScheduler(int numStudents, String[] taskInputFiles, String[] taskTimeFiles, String[] taskStudentFiles, String studentListFile) {
+
+    createStudentMap(studentListFile);
     numTasks = taskInputFiles.length;
     this.numStudents = numStudents;
     allTasks = new ArrayList<WebScheduler>();
-    for(int i=0; i<numTasks; i++){
+    for (int i = 0; i < numTasks; i++) {
       WebScheduler s = new WebScheduler(taskInputFiles[i]);
       s.useStudentInfo = true;
       s.useTaskInfo = true;
+      s.TASK_INFO_FILE_PATH = taskTimeFiles[i];
+      s.STUDENT_INFO_FILE_PATH = taskStudentFiles[i];
       s.setup();
       allTasks.add(s);
+    }
+  }
+
+  private void createStudentMap(String studentListFile){
+    File f = new File(studentListFile);
+    try {
+      Scanner sc = new Scanner(f);
+      int studentID = 0;
+      while(sc.hasNext()){
+        students.put(sc.next(), studentID);
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
   }
 
@@ -43,7 +65,7 @@ public class TotalScheduler {
     ArrayList<int[]> conflicts = new ArrayList<>();
 
     for(int i=timeRange[0]; i<=timeRange[1]; i++){
-      if(studentSchedule.get(i)[0]!=0){
+      if(studentSchedule.get(i)[0]!=-1){
         if((i!=0) && Arrays.equals(studentSchedule.get(i), studentSchedule.get(i - 1))){
           int[] conflict = new int[2];
           conflict[0] = studentSchedule.get(i)[0];
@@ -162,16 +184,21 @@ public class TotalScheduler {
   }
 
   public static void main(String[] args){
-    int[] test = new int[2];
-    test[0] = 3;
-    test[1] = 4;
 
-    ArrayList<int[]> a = new ArrayList<>();
-    a.add(new int[2]);
-    a.add(new int[2]);
-    a.set(0, test);
-    a.set(1, test);
-    test[0] = 1;
+    String[] taskInputFiles =  new String[2];
+    taskInputFiles[0] = ROOT_DIRECTORY + "TaskA_array.txt";
+    taskInputFiles[1] = ROOT_DIRECTORY + "TaskB_array.txt";
+    String[] taskTimeFiles = new String[2];
+    taskTimeFiles[0] = ROOT_DIRECTORY + "TaskA_times.txt";
+    taskTimeFiles[1] = ROOT_DIRECTORY + "TaskB_times.txt";
+    String[] taskStudentFiles = new String[2];
+    taskStudentFiles[0] = ROOT_DIRECTORY + "TaskA_students.txt";
+    taskStudentFiles[1] = ROOT_DIRECTORY + "TaskB_students.txt";
+
+
+
+    TotalScheduler scheduler = new TotalScheduler(3, taskInputFiles, taskTimeFiles, taskStudentFiles, ROOT_DIRECTORY + "StudentList.txt");
+    scheduler.schedule();
 
   }
 
