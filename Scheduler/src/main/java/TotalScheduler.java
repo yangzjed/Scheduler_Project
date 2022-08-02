@@ -40,18 +40,26 @@ public class TotalScheduler {
       int studentID = 0;
       while(sc.hasNext()){
         students.put(sc.next(), studentID);
+        studentID++;
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
   }
 
-  private void setAsUnavailable(int[] taskDescriptor, int studentNumber){
+  private void setAsUnavailable(int[] taskDescriptor, String studentName){
     WebScheduler s = allTasks.get(taskDescriptor[0]);
-    s.availabilityArrayStatic[taskDescriptor[1]][studentNumber] = 0;
-    s.availabilityArray[taskDescriptor[1]][studentNumber] = 0;
-    s.availableStudents.get(studentNumber).availabilities.set(taskDescriptor[1], 0);
-    s.availableStudentsStatic.get(studentNumber).availabilities.set(taskDescriptor[1], 0);
+    //TODO: find local student number
+    int localStudentNumber = -1;
+    for(int i=0; i<s.availableStudentsStatic.size(); i++){
+      if(s.availableStudents.get(i).name.equals(studentName)){
+        localStudentNumber = i;
+      }
+    }
+    s.availabilityArrayStatic[taskDescriptor[1]][localStudentNumber] = 0;
+    s.availabilityArray[taskDescriptor[1]][localStudentNumber] = 0;
+    s.availableStudents.get(localStudentNumber).availabilities.set(taskDescriptor[1], 0);
+    s.availableStudentsStatic.get(localStudentNumber).availabilities.set(taskDescriptor[1], 0);
   }
 
   private int[] timeRange(int[] taskDescriptor){
@@ -66,7 +74,7 @@ public class TotalScheduler {
 
     for(int i=timeRange[0]; i<=timeRange[1]; i++){
       if(studentSchedule.get(i)[0]!=-1){
-        if((i!=0) && Arrays.equals(studentSchedule.get(i), studentSchedule.get(i - 1))){
+        if(!((i!=0) && Arrays.equals(studentSchedule.get(i), studentSchedule.get(i - 1)))){
           int[] conflict = new int[2];
           conflict[0] = studentSchedule.get(i)[0];
           conflict[1] = studentSchedule.get(i)[1];
@@ -156,12 +164,12 @@ public class TotalScheduler {
 
                 //set the availabilities in res to 0
                 for(int[] a : res){
-                  setAsUnavailable(a, j);
+                  setAsUnavailable(a, w.name);
                 }
               }
               else{
                 //an existing task took precedence. Do nothing except set availabilities in taskDescriptor to 0
-                setAsUnavailable(taskDescriptor, j);
+                setAsUnavailable(taskDescriptor, w.name);
               }
 
               //update all availability arrays and student lists
