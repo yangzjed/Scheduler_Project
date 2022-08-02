@@ -68,7 +68,7 @@ public class WebScheduler {
     try {
       Scanner sc = new Scanner(f);
       int i = 0;
-      while(sc.hasNext()){
+      while(sc.hasNextLine()){
         int[] taskTimeBounds =Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         taskTimes.add(TimeDiscretize.timeRange(taskTimeBounds));
         i++;

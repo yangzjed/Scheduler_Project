@@ -138,22 +138,23 @@ public class TotalScheduler {
     for(WebScheduler s : allTasks){
       for(WebAvailability w : s.availableStudentsStatic){
         //student w
+        int localTaskNum = 0;
         int studentNum = students.get(w.name); //global
         for(int k=0; k<w.availabilities.size(); k++){
-          if(w.availabilities.get(k) != 0){
+          if(w.availabilities.get(k) != 0) {
             int[] taskDescriptor = new int[2];
             taskDescriptor[0] = i;
-            taskDescriptor[1] = k;
-            List<int[]> res = addToSchedule(studentNum, s.taskTimes.get(j), taskDescriptor);
-            if(!res.isEmpty()){
+            taskDescriptor[1] = localTaskNum;
+            List<int[]> res = addToSchedule(studentNum, s.taskTimes.get(localTaskNum), taskDescriptor);
+            if (!res.isEmpty()) {
               //conflict found
               ArrayList<int[]> competingTasks = new ArrayList<int[]>(res);
               competingTasks.add(taskDescriptor);
               //TODO: find task with the least number of students offering to complete it
               int[] minTask = keptTask(competingTasks);
-              if(Arrays.equals(minTask, taskDescriptor)){
+              if (Arrays.equals(minTask, taskDescriptor)) {
                 //overwrite everything with -1
-                for(int[] a : res){
+                for (int[] a : res) {
                   int[] n = new int[2];
                   n[0] = -1;
                   n[1] = -1;
@@ -163,11 +164,10 @@ public class TotalScheduler {
                 addToSchedule(studentNum, s.taskTimes.get(j), taskDescriptor);
 
                 //set the availabilities in res to 0
-                for(int[] a : res){
+                for (int[] a : res) {
                   setAsUnavailable(a, w.name);
                 }
-              }
-              else{
+              } else {
                 //an existing task took precedence. Do nothing except set availabilities in taskDescriptor to 0
                 setAsUnavailable(taskDescriptor, w.name);
               }
@@ -176,9 +176,11 @@ public class TotalScheduler {
 
             }
           }
+          localTaskNum++;
         }
         j++; //student number (local)
       }
+      j = 0;
       i++; //task number
     }
   }
