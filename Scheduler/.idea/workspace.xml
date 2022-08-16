@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bbebdf-63ba-4415-8f5e-07e84676b6db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/TotalSchedulerTest2/Ed_array.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/TotalSchedulerTest2/Ed_students.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/TotalSchedulerTest2/Ed_times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/Ed_array.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/Ed_students.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/Ed_times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/OH_array.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/OH_students.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/OH_times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/CS210_Fa22/StudentList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/TotalSchedulerTest2/StudentList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/TotalSchedulerTest2/StudentList.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TotalScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TotalSchedulerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TotalSchedulerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/TotalSchedulerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TotalSchedulerTest.class" afterDir="false" />
     </list>
@@ -52,7 +56,7 @@
       <recent name="C:\Users\jedya\Documents\Documents\Scheduler_Project\Scheduler\src\data" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TotalSchedulerTest.test2">
+  <component name="RunManager" selected="JUnit.TotalSchedulerTest">
     <configuration name="TotalScheduler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TotalScheduler" />
       <module name="Scheduler" />
@@ -79,11 +83,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TotalSchedulerTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TotalSchedulerTest.testCS210_Fa22" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Scheduler" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TotalSchedulerTest" />
-      <option name="METHOD_NAME" value="test2" />
+      <option name="METHOD_NAME" value="testCS210_Fa22" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +104,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TotalSchedulerTest.test2" />
-        <item itemvalue="JUnit.WebSchedulerTest" />
         <item itemvalue="JUnit.TotalSchedulerTest" />
-        <item itemvalue="JUnit.TotalSchedulerTest.test1" />
+        <item itemvalue="JUnit.WebSchedulerTest" />
+        <item itemvalue="JUnit.TotalSchedulerTest.testCS210_Fa22" />
         <item itemvalue="Application.TotalScheduler" />
+        <item itemvalue="JUnit.TotalSchedulerTest.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -137,13 +141,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/TotalScheduler.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="19" />
+          <line>189</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/TotalScheduler.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="24" />
+          <line>50</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/TotalScheduler.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -45,4 +45,22 @@ public class TotalSchedulerTest {
     scheduler.schedule();
 
   }
+
+
+  @Test
+  void testCS210_Fa22(){
+    String[] taskInputFiles =  new String[2];
+    taskInputFiles[0] = ROOT_DIRECTORY + "CS210_Fa22/Ed_array.txt";
+    taskInputFiles[1] = ROOT_DIRECTORY + "CS210_Fa22/OH_array.txt";
+    String[] taskTimeFiles = new String[2];
+    taskTimeFiles[0] = ROOT_DIRECTORY + "CS210_Fa22/Ed_times.txt";
+    taskTimeFiles[1] = ROOT_DIRECTORY + "CS210_Fa22/OH_times.txt";
+    String[] taskStudentFiles = new String[2];
+    taskStudentFiles[0] = ROOT_DIRECTORY + "CS210_Fa22/Ed_students.txt";
+    taskStudentFiles[1] = ROOT_DIRECTORY + "CS210_Fa22/OH_students.txt";
+
+    TotalScheduler scheduler = new TotalScheduler(15, taskInputFiles, taskTimeFiles, taskStudentFiles, ROOT_DIRECTORY + "CS210_Fa22/StudentList.txt");
+    scheduler.schedule();
+
+  }
 }
