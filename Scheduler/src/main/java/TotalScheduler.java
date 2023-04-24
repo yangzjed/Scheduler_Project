@@ -73,7 +73,7 @@ public class TotalScheduler {
     ArrayList<int[]> conflicts = new ArrayList<>();
 
     for(int i=timeRange[0]; i<=timeRange[1]; i++){
-      if(studentSchedule.get(i)[0]!=-1){
+      if(studentSchedule.get(i)[0]!=-1 && studentSchedule.get(i)[0]!=taskDescriptor[0]){
         if(!((i!=timeRange[0]) && Arrays.equals(studentSchedule.get(i), studentSchedule.get(i - 1)))){
           int[] conflict = new int[2];
           conflict[0] = studentSchedule.get(i)[0];
